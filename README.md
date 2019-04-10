@@ -31,3 +31,10 @@ zabbix自带的tomcat监控，存在如下不足：
   
 ![image](https://github.com/qiueer/zabbix/raw/master/All%20In%20One/effects/p4.png)   
 
+
+#######20190410##################
+1.在zabbix服务器使用命令查看
+  [root@3 ~]# zabbix_get -s 172.22.0.32  -k jmx.jvm.item["java.lang:type=Memory",HeapMemoryUsage.committed,12345]
+   
+2.监控JVM在jar包启动的时候需要添加下面的差数
+   -Dcom.sun.management.jmxremote.port=12345  -Dcom.sun.management.jmxremote.ssl=false  -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote   -Djava.rmi.server.hostname=192.16.5.7
