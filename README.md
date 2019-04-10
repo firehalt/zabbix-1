@@ -33,6 +33,7 @@ zabbix自带的tomcat监控，存在如下不足：
 
 
 #######20190410##################
+
 1.在zabbix服务器使用命令查看
   [root@3 ~]# zabbix_get -s 172.22.0.32  -k jmx.jvm.item["java.lang:type=Memory",HeapMemoryUsage.committed,12345]
    
