@@ -39,3 +39,11 @@ zabbix自带的tomcat监控，存在如下不足：
    
 2.监控JVM在jar包启动的时候需要添加下面的差数
    -Dcom.sun.management.jmxremote.port=12345  -Dcom.sun.management.jmxremote.ssl=false  -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote   -Djava.rmi.server.hostname=192.16.5.7
+
+
+二、在zabbix执行命令出现错误
+[root@SZ1PRDZBX00AP003 script]# zabbix_get -s 172.22.0.32  -k jmx.jvm.item["java.lang:type=Memory",HeapMemoryUsage.committed,12345]
+ can not find java command, exit.
+ 
+ 修改jvm.py 脚本里面的113行，把java命令的路径写成绝对路径
+  self._java_path = which("/usr/local/jdk1.8.0_111/jre/bin/java")
